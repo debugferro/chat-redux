@@ -10,8 +10,13 @@ class MessageForm extends Component {
     this.state = { value: '' };
   }
 
+
   componentDidMount() {
     this.messageBox.focus();
+  }
+
+  shouldComponentUpdate() {
+    return true;
   }
 
   handleChange = (event) => {
@@ -20,7 +25,7 @@ class MessageForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.sendMessage(this.props.channel, this.props.author, this.state.value);
+    this.props.sendMessage(this.props.selectedChannel, this.props.username, this.state.value);
     this.setState({ value: '' });
   }
 

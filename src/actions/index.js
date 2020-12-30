@@ -26,3 +26,10 @@ export function sendMessage(channel, username, messageContent) {
     payload: promise
   };
 }
+
+export function changeChannel(channel) {
+  return {
+    type: 'CHANGE_CHANNEL',
+    payload: channel
+  };
+}

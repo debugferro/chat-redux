@@ -14,14 +14,17 @@ class MessageList extends Component {
     this.refresher = setInterval(this.fetchMessages, 5000);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.refresher);
+  }
+
   fetchMessages = () => {
     this.props.fetchMessages(this.props.channel);
   }
 
   renderMessages = () => {
-    console.log(this.props);
     return this.props.messages.map((message) => {
-      return (<Message key={message.created_at} data={message} />);
+      return (<Message key={message.author} data={message} />);
     });
   }
 

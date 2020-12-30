@@ -1,10 +1,11 @@
 import React from 'react';
-import Message from './message';
+import ChannelList from '../containers/channel_list';
 import MessageList from '../containers/message_list';
 
 const App = () => {
   return (
     <div className="messaging-wrapper">
+      <ChannelList />
       <MessageList />
     </div>
   );
