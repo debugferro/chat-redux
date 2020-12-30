@@ -84,6 +84,7 @@ body {
   box-sizing: border-box;
   height: 100%;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .message-container > i {

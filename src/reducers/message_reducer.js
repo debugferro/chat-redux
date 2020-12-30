@@ -7,6 +7,8 @@ const MessageReducer = (state = [], action) => {
       newMessages.push(action.payload);
       return newMessages;
     }
+    case 'CHANGE_CHANNEL':
+      return [];
     default:
       return state;
   }

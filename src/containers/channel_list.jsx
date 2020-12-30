@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import { changeChannel, fetchMessages } from '../actions/index';
 
 class ChannelList extends Component {
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedChannel !== this.props.selectedChannel) {
-      this.props.fetchMessages(nextProps.selectedChannel);
-    }
+  handleClick = (channel) => {
+    this.props.changeChannel(channel);
+    this.props.fetchMessages(channel);
   }
 
   renderChannelList = () => {
@@ -16,7 +15,7 @@ class ChannelList extends Component {
         <li
           key={channel}
           className={channel === this.props.presentChannel ? 'active' : null}
-          onClick={() => { this.props.changeChannel(channel); }}
+          onClick={() => this.handleClick(channel)}
         >
         #{channel}
         </li>
