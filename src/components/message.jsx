@@ -4,10 +4,15 @@ import { connect } from 'react-redux';
 import { selectCity } from '../actions/index';
 
 const Message = (props) => {
+  const { author, content, created_at } = props.data;
+  const time = new Date(created_at).toLocaleTimeString();
   return (
-    <div>
-      <h3>{props.data.author}</h3>
-      <p>{props.data.content}</p>-
+    <div className="message-container">
+      <i className="author">
+        <span>{author}</span>
+        <small>{time}</small>
+      </i>
+      <p>{content}</p>-
     </div>
   );
 };

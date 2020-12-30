@@ -6,6 +6,14 @@ import { fetchMessages } from '../actions/index';
 
 class MessageList extends Component {
   componentWillMount() {
+    this.fetchMessages();
+  }
+
+  componentDidMount() {
+    this.refresher = setInterval(this.fetchMessages, 5000);
+  }
+
+  fetchMessages = () => {
     this.props.fetchMessages(this.props.channel);
   }
 
@@ -18,8 +26,13 @@ class MessageList extends Component {
 
   render() {
     return (
-      <div>
-        {this.renderMessages()}
+      <div className="channel-container">
+        <div className="channel-title">
+          <span>Channel #{this.props.channel}</span>
+        </div>
+        <div className="channel-content">
+          {this.renderMessages()}
+        </div>
       </div>
     );
   }

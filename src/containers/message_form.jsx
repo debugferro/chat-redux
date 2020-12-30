@@ -7,11 +7,11 @@ class MessageForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      author: props.username,
-      channel: props.selectedChannel,
-      value: ''
-    };
+    this.state = { value: '' };
+  }
+
+  componentDidMount() {
+    this.messageBox.focus();
   }
 
   handleChange = (event) => {
@@ -19,15 +19,21 @@ class MessageForm extends Component {
   }
 
   handleSubmit = (event) => {
-    this.props.sendMessage(this.state.channel, this.state.author, this.state.value);
     event.preventDefault();
+    this.props.sendMessage(this.props.channel, this.props.author, this.state.value);
+    this.setState({ value: '' });
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} >
-        <textarea value={this.state.value} onChange={this.handleChange} />
-        <input type="submit" value="Submit" />
+      <form onSubmit={this.handleSubmit} className="channel-editor" >
+        <textarea
+          ref={(textarea) => { this.messageBox = textarea; }}
+          value={this.state.value}
+          onChange={this.handleChange}
+          className="form-control"
+        />
+        <input type="submit" value="Send" />
       </form>
     );
   }
