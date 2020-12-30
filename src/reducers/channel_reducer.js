@@ -1,7 +1,7 @@
 const ChannelReducer = (state = null, action) => {
   switch (action.type) {
     default:
-      return state;
+      return ['general', 'react', 'rio de janeiro'];
   }
 };
 
